@@ -3,7 +3,7 @@ description: "Upstream repository sync using GitHub Actions"
 author: "rafaelcalleja"
 runs:
   using: "docker"
-  image: "rafaelcalleja/upsync-action:0.0.1"
+  image: "docker://rafaelcalleja/upsync-action:0.0.1"
 branding:
   icon: "copy"
   color: "green"
