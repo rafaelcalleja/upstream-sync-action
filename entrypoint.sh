@@ -19,7 +19,7 @@ envsubst < "${FLAGS_configfile}" > "${REALCONFIG}"
 SYNCS=$(cat ${REALCONFIG}  |yq -j e '.sync' -|jq -c '')
 DEFAULT_EXCLUDES=${DEFAULT_EXCLUDES:-"--exclude .upsync.yml"}
 #DEFAULT_EXCLUDES=${DEFAULT_EXCLUDES:-}
-[ ! -z "$DEBUG" ] && set -x
+[[ -z "$DEBUG" ]] || set -x
 for row in $(echo "${SYNCS}" | jq -r '.[] | @base64'); do
     _jq() {
       echo ${row} | base64 --decode | jq -r "${1}"
