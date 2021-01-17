@@ -12,5 +12,5 @@ RUN apt update && \
     apt-get autoclean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY cmd.sh /cmd.sh
-CMD ["/cmd.sh"]
+COPY entrypoint.sh /entrypoint.sh
+CMD ["/entrypoint.sh"]
