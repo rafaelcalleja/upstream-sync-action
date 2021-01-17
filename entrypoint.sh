@@ -17,8 +17,8 @@ REALCONFIG="/tmp/${FLAGS_configfile}.yaml"
 envsubst < "${FLAGS_configfile}" > "${REALCONFIG}"
 
 SYNCS=$(cat ${REALCONFIG}  |yq -j e '.sync' -|jq -c '')
-#DEFAULT_EXCLUDES=${DEFAULT_EXCLUDES:-"--exclude .upsync.yml"}
-DEFAULT_EXCLUDES=${DEFAULT_EXCLUDES:-}
+DEFAULT_EXCLUDES=${DEFAULT_EXCLUDES:-"--exclude .upsync.yml"}
+#DEFAULT_EXCLUDES=${DEFAULT_EXCLUDES:-}
 
 for row in $(echo "${SYNCS}" | jq -r '.[] | @base64'); do
     _jq() {
