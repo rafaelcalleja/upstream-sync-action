@@ -13,7 +13,7 @@ if ! test -f "${FLAGS_configfile}"; then
     echo "config file ${FLAGS_configfile} not found"
     exit 127
 fi
-REALCONFIG="${FLAGS_configfile}.yaml"
+REALCONFIG="/tmp/${FLAGS_configfile}.yaml"
 envsubst < "${FLAGS_configfile}" > "${REALCONFIG}"
 
 SYNCS=$(cat ${REALCONFIG}  |yq -j e '.sync' -|jq -c '')
