@@ -63,9 +63,9 @@ for row in $(echo "${SYNCS}" | jq -r '.[] | @base64'); do
      done
      EXC_REGEX="$(IFS=' ' ; echo "${EXC[*]}")"
 
-     #echo git diff ${DIFFARGS} ..${REMOTE}/${BRANCH} -- $SRC \| git apply ${EXC_REGEX} $(git ls-tree -r ${REMOTE}/${BRANCH} --name-only|xargs  -i sh -c "echo --include {}" |xargs) --summary
-     git diff ${DIFFARGS} ..${REMOTE}/${BRANCH} -- $SRC | git apply ${EXC_REGEX} $(git ls-tree -r ${REMOTE}/${BRANCH} --name-only|xargs  -i sh -c "echo --include {}" |xargs) --summary
-     git diff ${DIFFARGS} ..${REMOTE}/${BRANCH} -- $SRC | git apply ${EXC_REGEX} $(git ls-tree -r ${REMOTE}/${BRANCH} --name-only|xargs  -i sh -c "echo --include {}" |xargs)
+     #echo git diff $(echo ${DIFFARGS}|xargs) ..${REMOTE}/${BRANCH} -- $SRC \| git apply ${EXC_REGEX} $(git ls-tree -r ${REMOTE}/${BRANCH} --name-only|xargs  -i sh -c "echo --include {}" |xargs) --summary
+     git diff $(echo ${DIFFARGS}|xargs) ..${REMOTE}/${BRANCH} -- $SRC | git apply ${EXC_REGEX} $(git ls-tree -r ${REMOTE}/${BRANCH} --name-only|xargs  -i sh -c "echo --include {}" |xargs) --summary
+     git diff $(echo ${DIFFARGS}|xargs) ..${REMOTE}/${BRANCH} -- $SRC | git apply ${EXC_REGEX} $(git ls-tree -r ${REMOTE}/${BRANCH} --name-only|xargs  -i sh -c "echo --include {}" |xargs)
      git add $SRC
    done
 
