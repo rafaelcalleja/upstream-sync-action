@@ -1,0 +1,14 @@
+name: "UpstreamSync"
+description: "Upstream repository sync using GitHub Actions"
+author: "rafaelcalleja"
+inputs:
+  command:
+    required: true
+    description: "Command to run"
+    default: "update"
+runs:
+  using: "docker"
+  main: "Dockerfile"
+branding:
+  icon: "copy"
+  color: "green"

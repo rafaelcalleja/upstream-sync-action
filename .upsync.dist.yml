@@ -1,0 +1,12 @@
+sync:
+  - origin: ${ORIGIN_URL}
+    origin_branch: master
+    username: ${GH_USERNAME}
+    token: ${GH_TOKEN}
+    branch: master
+    paths:
+      - src: dir
+        dest: dest
+        exclude:
+          - file
+          - dir
