@@ -30,6 +30,7 @@ for row in $(echo "${SYNCS}" | jq -r '.[] | @base64'); do
    TOKEN=$(_jq '.token // empty')
    BRANCH=$(_jq '.branch // empty')
    MESSAGE=$(_jq '.message // empty')
+   DIFFARGS=$(_jq '.diff_args // empty')
    PATHS=$(_jq '.paths')
 
    ([ -z "$ORIGIN" ] || [ -z "$USERNAME" ] || [ -z "$TOKEN" ] || [ -z "$BRANCH" ] || [ -z "$MESSAGE" ]) && { (echo "required values: origin,username,token,branch,message"); exit 0; }
